@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+
+<!-- 	<package name="user_package" namespace="/" extends="struts-default">
+		<action name="userLogin" class="cc.ccoder.controler.UserAction" method="userLogin">
+			<result name="login_fail">/index.jsp</result>
+			<result name="login_success">/welcome.jsp</result>
+		</action>
+	</package> -->
+
+</struts>    

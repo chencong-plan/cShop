@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
+	http://www.springframework.org/schema/beans 
+	http://www.springframework.org/schema/beans/spring-beans-4.1.xsd 
+	http://www.springframework.org/schema/tx 
+	http://www.springframework.org/schema/tx/spring-tx.xsd
+	http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context-3.0.xsd
+	">
+
+	<!-- 使用 annotation -->
+	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 -->
+	<context:component-scan base-package="cc.ccoder" />
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="url" value="jdbc:mysql://localhost:3306/shopping" />
+		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
+		<property name="username" value="root"></property>
+		<property name="password" value="123456"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.format_sql">true</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>cc/ccoder/model/entity/User.hbm.xml</value>
+				<value>cc/ccoder/model/entity/Product.hbm.xml</value>
+				<value>cc/ccoder/model/entity/Cart.hbm.xml</value>
+				<value>cc/ccoder/model/entity/Shipping.hbm.xml</value>
+				<value>cc/ccoder/model/entity/OrderItem.hbm.xml</value>
+				<value>cc/ccoder/model/entity/Order.hbm.xml</value>
+				<value>cc/ccoder/model/entity/Comments.hbm.xml</value>
+				<value>cc/ccoder/model/entity/Category.hbm.xml</value>
+				<value>cc/ccoder/model/entity/BusinessInfo.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<tx:annotation-driven transaction-manager="transactionManager" />
+
+	<!-- <bean id="userDao" class="cc.ccoder.model.dao.impl.UserDaoImpl"> <property 
+		name="sessionFactory" ref="sessionFactory"/> </bean> <bean id="userService" 
+		class="cc.ccoder.model.service.impl.UserServiceImpl"> <property name="userDao" 
+		ref="userDao"/> </bean> <bean id="userAction" class="cc.ccoder.controler.UserAction" 
+		scope="prototype"> <property name="userService" ref="userService"/> </bean> -->
+
+</beans>
