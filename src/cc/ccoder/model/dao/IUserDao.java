@@ -9,5 +9,9 @@ public interface IUserDao {
 	User userLogin(User user);
 
 	boolean userRegister(User user);
+	
+	User checkUsername(String username);
+	
+	User checkUserEmail(String email);
 
 }

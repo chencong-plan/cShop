@@ -2,11 +2,30 @@
 <!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
 <struts>
 
-<!-- 	<package name="user_package" namespace="/" extends="struts-default">
-		<action name="userLogin" class="cc.ccoder.controler.UserAction" method="userLogin">
-			<result name="login_fail">/index.jsp</result>
-			<result name="login_success">/welcome.jsp</result>
+	<package name="user_package" namespace="/" extends="json-default">
+		<!-- 登录 -->
+		<action name="Login" class="userAction">
+			<!-- 用户登录 -->
+			<result name="success" type="json">
+				<param name="root">msg</param>
+			</result>
+			
+			<!-- 管理员登录 -->
+			<result name="admin_login_success" type="redirect">/admin/welcome.jsp</result>
+			<result name="admin_login_fail" type="redirect">/admin/adminlogin.jsp</result>
 		</action>
-	</package> -->
+		
+		<!-- 检查用户邮箱地址 -->
+		<action name="checkUser" class="userAction">
+			<result name="success" type="json">
+				<param name="root">msg</param>
+			</result>
+		</action>
+		<action name="userRegister" class="userAction">
+			<result name="success" type="json">
+				<param name="root">msg</param>
+			</result>
+		</action>
+	</package>
 
 </struts>    

@@ -1,6 +1,5 @@
 package cc.ccoder.model.service;
 
-
 import cc.ccoder.model.entity.User;
 
 public interface IUserService {
@@ -8,5 +7,9 @@ public interface IUserService {
 	User userLogin(User user);
 
 	boolean userRegister(User user);
+
+	User checkUsername(String username);
+
+	User checkUserEmail(String email);
 
 }

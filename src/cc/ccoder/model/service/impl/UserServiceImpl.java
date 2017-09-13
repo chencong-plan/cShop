@@ -24,7 +24,23 @@ public class UserServiceImpl implements IUserService {
 
 	@Override
 	public boolean userRegister(User user) {
-		return false;
+		return iUserDao.userRegister(user);
+	}
+
+	@Override
+	public User checkUsername(String username) {
+		if (username == null) {
+			return null;
+		}
+		return iUserDao.checkUsername(username);
+	}
+
+	@Override
+	public User checkUserEmail(String email) {
+		if (email == null) {
+			return null;
+		}
+		return iUserDao.checkUserEmail(email);
 	}
 
 }
