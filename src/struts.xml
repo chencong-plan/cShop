@@ -47,4 +47,13 @@
 			</result>
 		</action>
 	</package>
+	
+	<!-- 商品分类请求包 -->
+	<package name="category_package" namespace="/" extends="json-default">
+		<action name="category" class="categoryAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
 </struts>    

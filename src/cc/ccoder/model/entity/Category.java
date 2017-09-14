@@ -3,10 +3,12 @@ package cc.ccoder.model.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.alibaba.fastjson.annotation.JSONType;
+
 /**
  * Category entity. @author MyEclipse Persistence Tools
  */
-
+@JSONType(ignores={"categories","products","category"})
 public class Category implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
