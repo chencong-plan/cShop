@@ -40,5 +40,11 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+		<!-- 退出登录 -->
+		<action name="userLogout" class="userAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
 	</package>
 </struts>    

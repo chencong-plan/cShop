@@ -5,14 +5,14 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="ie=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=dns-prefetch href=//cdn.bootcss.com / />
+<link rel=dns-prefetch href="../resourses/bootstrap/css/bootstrap.css" />
 
-<title>用户中心--ccoder电商平台</title>
+<title>订单详情--MMall电商平台</title>
 <link
 	href="//s.happymmall.com/mmall_fe/dist/css/common.css?9dd65f513c150dbd6188"
 	rel="stylesheet">
 <link
-	href="//s.happymmall.com/mmall_fe/dist/css/user-center.css?9dd65f513c150dbd6188"
+	href="//s.happymmall.com/mmall_fe/dist/css/order-detail.css?9dd65f513c150dbd6188"
 	rel="stylesheet">
 <!-- 加入jquery -->
 <script type="text/javascript" src="../resourses/jquery-3.2.1.min.js"></script>
@@ -27,7 +27,6 @@
 				if (result.status == "10") {
 					//未登录,跳转去登陆界面
 					window.location.href = "userlogin.jsp";
-
 				}
 				if (result.status == "0") {
 					//登录 显示用户名 等一系列信息
@@ -73,7 +72,7 @@
 			<div class=user-info>
 				<span class="site-user not-login"> <span
 					class="link link-login">登录</span> <span class="link link-register">注册</span>
-				</span> <span class="site-user login"> <span class=link-text>欢迎，<span
+				</span> <span class="site-user login"> <span class=link-text>欢迎,<span
 						class="username" id="username"></span></span> <span
 					class="link link-logout">退出</span>
 				</span>
@@ -92,7 +91,7 @@
 		<div class=w>
 			<a class=logo href="../index.jsp">ccoder</a>
 			<div class=search-form>
-				<input class=search-input id=search-input placeholder=请输入商品名称 />
+				<input class=search-input id="search-input" placeholder=请输入商品名称 />
 				<button class=search-btn id=search-btn>搜索</button>
 			</div>
 		</div>
@@ -101,19 +100,14 @@
 		<div class="w">
 			<div class="crumb-list">
 				<a href="./index.html" class="crumb-item">MMall</a> <span>></span> <span
-					class="crumb-item">个人中心</span>
+					class="crumb-item">订单详情</span>
 			</div>
 		</div>
 	</div>
-	<div class="pass-update-wrap w">
+	<div class="order-detail-wrap w">
 		<div class="left-con"></div>
 		<div class="right-con">
-			<div class="panel">
-				<div class="panel-title">我的信息</div>
-				<div class="panel-body">
-					<div class="loading"></div>
-				</div>
-			</div>
+			<div class="loading"></div>
 		</div>
 	</div>
 	<div class=footer>

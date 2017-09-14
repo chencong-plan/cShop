@@ -5,15 +5,16 @@
 <meta charset=utf-8>
 <meta http-equiv=x-ua-compatible content="ie=edge">
 <meta name=viewport content="width=device-width,initial-scale=1">
-<link rel=dns-prefetch href=//cdn.bootcss.com / />
+<link rel=dns-prefetch href="../resourses/bootstrap/css/bootstrap.css" />
 
-<title>用户中心--ccoder电商平台</title>
+<title>购物车--电商平台</title>
 <link
 	href="//s.happymmall.com/mmall_fe/dist/css/common.css?9dd65f513c150dbd6188"
 	rel="stylesheet">
 <link
-	href="//s.happymmall.com/mmall_fe/dist/css/user-center.css?9dd65f513c150dbd6188"
+	href="//s.happymmall.com/mmall_fe/dist/css/cart.css?9dd65f513c150dbd6188"
 	rel="stylesheet">
+
 <!-- 加入jquery -->
 <script type="text/javascript" src="../resourses/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
@@ -45,7 +46,6 @@
 		$(".link-register").click(function() {
 			window.location.href = "user/register.jsp";
 		});
-
 		//退出登录
 		$(".link-logout").click(function() {
 			$.ajax({
@@ -101,21 +101,11 @@
 		<div class="w">
 			<div class="crumb-list">
 				<a href="./index.html" class="crumb-item">MMall</a> <span>></span> <span
-					class="crumb-item">个人中心</span>
+					class="crumb-item">我的购物车</span>
 			</div>
 		</div>
 	</div>
-	<div class="pass-update-wrap w">
-		<div class="left-con"></div>
-		<div class="right-con">
-			<div class="panel">
-				<div class="panel-title">我的信息</div>
-				<div class="panel-body">
-					<div class="loading"></div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="cart-wrap w"></div>
 	<div class=footer>
 		<div class=w>
 			<div class=links>

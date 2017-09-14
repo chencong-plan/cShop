@@ -160,6 +160,9 @@ public class UserAction {
 		return "success";
 	}
 	
+	/*
+	 * 判断用户是否登陆
+	 */
 	public String checkLogin(){
 		//登录成功后，将用户信息放入session当中
 		HttpSession session = ServletActionContext.getRequest().getSession();
@@ -172,8 +175,21 @@ public class UserAction {
 		System.out.println(result);
 		return "success";
 	}
+	
+	public String userLogout(){
+		//从session当中拿到当前登录对象
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		User resuUser = (User) session.getAttribute(Const.CURRENT_USER);
+		if(resuUser == null){
+			result = JSON.toJSONString(ServerResponse.createBySuccessMessage("暂未登录"));
+		}else{
+			session.setAttribute(Const.CURRENT_USER, null);
+			result = JSON.toJSONString(ServerResponse.createBySuccessMessage("退出登录"));
+		}
+		return "success";
+	}
 
-//	@org.apache.struts2.json.annotations.JSON(serialize=false)
+
 	public User getUser() {
 		return user;
 	}
