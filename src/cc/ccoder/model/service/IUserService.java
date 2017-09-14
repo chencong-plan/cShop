@@ -11,5 +11,9 @@ public interface IUserService {
 	User checkUsername(String username);
 
 	User checkUserEmail(String email);
+	
+	User checkUserQuesionAndAnswer(String username,String question,String answer);
+
+	boolean updateUserPassword(String username, String password);
 
 }

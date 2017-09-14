@@ -17,6 +17,7 @@
 	<!-- 使用 annotation 自动注册bean,并检查@Controller, @Service, @Repository注解已被注入 -->
 	<context:component-scan base-package="cc.ccoder" />
 
+
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<property name="url" value="jdbc:mysql://localhost:3306/shopping" />
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />

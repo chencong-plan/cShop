@@ -15,12 +15,15 @@
 <script type="text/javascript" src="../resourses/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 	$(function() {
+		//定义一个状态是否可以提交
+		var flag = false;
 		//验证用户名是否使用了
 		$("#username").blur(function() {
 			var username = $("#username").val();
 			if (username === "") {
 				$(".err-item").css("display", "block");
 				$(".err-msg").html("用户名不能为空");
+				flag = false;
 			} else {
 				$.ajax({
 					url : "../checkUser!checkUsername",
@@ -29,15 +32,15 @@
 					},
 					type : "POST",
 					success : function(data) {
-						if (data === "username_is_exists") {
+					var result = JSON.parse(data);
+						if (result.msg === "username_is_exists") {
 							$(".err-item").css("display", "block");
 							$(".err-msg").html("用户名已经存在");
-							//按钮不可点击
-							$("#submit").attr("disabled", true);
+							flag = false;
 						} else {
 							$(".err-item").css("display", "none");
-							//按钮可点击
-							$("#submit").attr("disabled", false);
+							//可以提交
+							flag = true;
 						}
 					}
 				});
@@ -50,6 +53,7 @@
 			if (email === "") {
 				$(".err-item").css("display", "block");
 				$(".err-msg").html("邮箱不能为空");
+				flag = false;
 			} else {
 				$.ajax({
 					url : "../checkUser!checkUserEmail",
@@ -61,12 +65,10 @@
 						if (data === "email_is_exists") {
 							$(".err-item").css("display", "block");
 							$(".err-msg").html("邮箱已经存在");
-							//按钮不可点击
-							$("#submit").attr("disabled", true);
+							flag = false;
 						} else {
 							$(".err-item").css("display", "none");
-							//按钮可点击
-							$("#submit").attr("disabled", false);
+							flag = true;
 						}
 					}
 				});
@@ -79,8 +81,7 @@
 			if (password === "") {
 				$(".err-item").css("display", "block");
 				$(".err-msg").html("密码不能为空");
-				//按钮不可点击
-				$("#submit").attr("disabled", true);
+				flag = false;
 			}
 		});
 		//校验再次密码
@@ -88,18 +89,16 @@
 			var passwordConfirm = $("#password-confirm").val();
 			if (passwordConfirm === "") {
 				$(".err-item").css("display", "block");
-				$(".err-msg").html("密码不能为空");
+				flag = false;
 			} else {
 				//判断两次密码是否一致
 				if (passwordConfirm === $("#password").val()) {
 					$(".err-item").css("display", "none");
-					//按钮可点击
-					$("#submit").attr("disabled", false);
+					flag = true;
 				} else {
 					$(".err-item").css("display", "block");
 					$(".err-msg").html("两次密码不一致");
-					//按钮不可点击
-					$("#submit").attr("disabled", true);
+					flag = false;
 				}
 			}
 		});
@@ -110,8 +109,7 @@
 			if (password === "") {
 				$(".err-item").css("display", "block");
 				$(".err-msg").html("电话不能为空");
-				//按钮不可点击
-				$("#submit").attr("disabled", true);
+				flag = false;
 			}
 		});
 
@@ -121,8 +119,7 @@
 			if (password === "") {
 				$(".err-item").css("display", "block");
 				$(".err-msg").html("密保问题不能为空");
-				//按钮不可点击
-				$("#submit").attr("disabled", true);
+				flag = false;
 			}
 		});
 
@@ -132,8 +129,7 @@
 			if (password === "") {
 				$(".err-item").css("display", "block");
 				$(".err-msg").html("密保答案不能为空");
-				//按钮不可点击
-				$("#submit").attr("disabled", true);
+				flag = false;
 			}
 		});
 
@@ -145,27 +141,30 @@
 			var email = $("#email").val();
 			var question = $("#question").val();
 			var answer = $("#answer").val();
-			$.ajax({
-				url : "../userRegister!register",
-				data : {
-					"user.username" : username,
-					"user.password" : password,
-					"user.phone" : phone,
-					"user.email" : email,
-					"user.question" : question,
-					"user.answer" : answer
-				},
-				type : "POST",
-				success : function(data) {
-					if (data === "register_success") {
-						window.location.href = "userlogin.jsp";
+			if (flag) {
+				$.ajax({
+					url : "../userRegister!register",
+					data : {
+						"user.username" : username,
+						"user.password" : password,
+						"user.phone" : phone,
+						"user.email" : email,
+						"user.question" : question,
+						"user.answer" : answer
+					},
+					type : "POST",
+					success : function(data) {
+						if (data === "register_success") {
+							window.location.href = "userlogin.jsp";
+						}
+						if (data === "register_fail") {
+							$(".err-item").css("display", "block");
+							$(".err-msg").html("注册失败");
+						}
 					}
-					if (data === "register_fail") {
-						$(".err-item").css("display", "block");
-						$(".err-msg").html("注册失败");
-					}
-				}
-			});
+				});
+			}
+
 		});
 
 	});

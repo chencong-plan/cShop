@@ -10,8 +10,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.sun.org.apache.regexp.internal.recompile;
-
 import cc.ccoder.model.dao.IUserDao;
 import cc.ccoder.model.entity.User;
 
@@ -19,16 +17,12 @@ import cc.ccoder.model.entity.User;
 @Repository("iUserDao")
 public class UserDaoImpl implements IUserDao {
 
-	@Autowired 
+	@Autowired
 	private SessionFactory sessionFactory;
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public boolean userRegister(User user) {
-		Session session = (Session)this.sessionFactory.getCurrentSession();
+		Session session = (Session) this.sessionFactory.getCurrentSession();
 		try {
 			session.save(user);
 			return true;
@@ -66,5 +60,29 @@ public class UserDaoImpl implements IUserDao {
 		List<User> userlList = query.list();
 		return userlList.size() > 0 ? userlList.get(0) : null;
 	}
-	
+
+	@Override
+	public User checkUserQuesionAndAnswer(String username, String question,
+			String answer) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		Query query = session
+				.createQuery("from User where username = ? and question = ? and answer = ? ");
+		query.setParameter(0, username);
+		query.setParameter(1, question);
+		query.setParameter(2, answer);
+		List<User> userList = query.list();
+		return userList.size() > 0 ? userList.get(0) : null;
+	}
+
+	@Override
+	public boolean updateUserPassword(String username, String password) {
+		Session session = (Session) this.sessionFactory.getCurrentSession();
+		Query query = session
+				.createQuery("update User set password = ? where username = ?");
+		query.setParameter(0, password);
+		query.setParameter(1, username);
+		int row = query.executeUpdate();
+		return row > 0 ? true : false;
+	}
+
 }

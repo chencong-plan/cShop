@@ -23,11 +23,12 @@
 		$("#submit").click(function() {
 			var username = $("#username").val();
 			var password = $("#password").val();
-			$(".err-item").css("display", "block");
 			if (username === "") {
+				$(".err-item").css("display", "block");
 				$("#err-msg").html("用户名不能为空");
 			} else {
 				if (password === "") {
+					$(".err-item").css("display", "block");
 					$("#err-msg").html("密码不能为空");
 				} else {
 					//开始登录
@@ -40,13 +41,15 @@
 						type : "POST",
 						success : function(data) {
 							if (data === "login_fail") {
+								$(".err-item").css("display", "block");
 								$("#err-msg").html("用户名或密码错误");
 							}
-							if(data === "login_fail_noActive"){
+							if (data === "login_fail_noActive") {
+								$(".err-item").css("display", "block");
 								$("#err-msg").html("账户未激活，前去注册邮箱激活吧");
-							} 
-							if(data === "login_success") {
-								//管理显示错误页面
+							}
+							if (data === "login_success") {
+								//管理显示页面
 								$(".err-item").css("display", "none");
 								window.location.href = "../index.jsp";
 							}

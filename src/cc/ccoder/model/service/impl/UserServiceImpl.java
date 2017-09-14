@@ -43,4 +43,21 @@ public class UserServiceImpl implements IUserService {
 		return iUserDao.checkUserEmail(email);
 	}
 
+	@Override
+	public User checkUserQuesionAndAnswer(String username, String question,
+			String answer) {
+		if (username == null || question == null || answer == null) {
+			return null;
+		}
+		return iUserDao.checkUserQuesionAndAnswer(username, question, answer);
+	}
+
+	@Override
+	public boolean updateUserPassword(String username, String password) {
+		if(username == null || password == null){
+			return false;
+		}
+		return iUserDao.updateUserPassword(username,password);
+	}
+
 }

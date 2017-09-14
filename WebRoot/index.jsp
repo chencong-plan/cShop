@@ -1,22 +1,58 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!doctype html>
 <html>
 <head>
     <meta charset=utf-8>
-
+    <meta http-equiv=x-ua-compatible content="ie=edge">
+    <meta name=viewport content="width=device-width,initial-scale=1">
     <link rel=dns-prefetch href="../resourses/bootstrap/css/bootstrap.css" />
 
     <title>电商平台</title>
+
     <link href="//s.happymmall.com/mmall_fe/dist/css/common.css?9dd65f513c150dbd6188" rel="stylesheet">
     <link href="//s.happymmall.com/mmall_fe/dist/css/index.css?9dd65f513c150dbd6188" rel="stylesheet">
+	<!-- 加入jquery -->
+	<script type="text/javascript" src="../resourses/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$.ajax({
+				url:"",
+				data:{},
+				type:"POST",
+				success:function(data){
+					var result = JSON.parse(data);
+					if(result.status == "10"){
+						//未登录
+						$(".not-login").css("display","block");
+						$(".login").css("display","none");
+					}
+					if(result.status == "0"){
+						//登录 显示用户名
+						$(".not-login").css("display","none");
+						$(".login").css("display","block");
+						$("#username").html(result.data.username);
+					}
+				}
+			});
+		});
+	</script>
 </head>
 <body>
-
 <div class=site-nav>
     <div class=w>
-        <div class=user-info><span class="site-user not-login"> <span class="link link-login">登录</span> <span
-                class="link link-register" href=./register.html>注册</span> </span> <span class="site-user login"> <span
-                class=link-text>欢迎，<span class=username></span></span> <span class="link link-logout">退出</span> </span>
+        <div class=user-info>
+        		<span class="site-user not-login" style="display: block"> 
+	        		<span class="link link-login">登录</span> 
+	        		<span class="link link-register" href=./register.html>注册</span> 
+	        	</span>
+        	
+	        <span class="site-user login" style="display: none"> 
+	        	<span class=link-text>欢迎，
+	        		<span class="username" id="username"></span>
+	        	</span>
+	        	<span class="link link-logout">退出</span>
+	        </span>
         </div>
         <ul class=nav-list>
             <li class=nav-item><a class=link href=./cart.html> <i class="fa fa-shopping-cart"></i> 购物车(<span
@@ -28,7 +64,7 @@
     </div>
 </div>
 <div class=header>
-    <div class=w><a class=logo href=./index.html>ccoder</a>
+    <div class=w><a class=logo href=index.jsp>ccoder</a>
         <div class=search-form><input class=search-input id=search-input placeholder=请输入商品名称/>
             <button class=search-btn id=search-btn>搜索</button>
         </div>
@@ -96,26 +132,7 @@
                         <img class="banner-img" src="//s.happymmall.com/mmall_fe/dist/resource/banner-fe.jpg"/>
                     </a>
                 </li>
-                <li>
-                    <a href="http://coding.imooc.com/class/96.html" target="_blank">
-                        <img class="banner-img" src="//s.happymmall.com/mmall_fe/dist/resource/banner-bg.jpg"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="./list.html?categoryId=100016" target="_blank">
-                        <img class="banner-img" src="//s.happymmall.com/mmall_fe/dist/resource/banner3.jpg"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="./list.html?categoryId=100001" target="_blank">
-                        <img class="banner-img" src="//s.happymmall.com/mmall_fe/dist/resource/banner4.jpg"/>
-                    </a>
-                </li>
-                <li>
-                    <a href="./list.html?categoryId=100021" target="_blank">
-                        <img class="banner-img" src="//s.happymmall.com/mmall_fe/dist/resource/banner5.jpg"/>
-                    </a>
-                </li>
+
             </ul>
         </div>
         <div class="banner-arrow prev" data-forword="prev"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
@@ -137,7 +154,6 @@
             </li>
         </ul>
     </div>
-
     <div class="floor-wrap">
         <h1 class="floor-title">F2 数码3C</h1>
         <ul class="floor-con">
@@ -169,6 +185,7 @@
     <div class="floor-wrap">
         <h1 class="floor-title">F4 食品生鲜</h1>
         <ul class="floor-con">
+
             <li class="floor-item">
                 <a href="./list.html?categoryId=100025">
                     <span class="floor-text">进口食品</span>
@@ -200,5 +217,6 @@
             | <a class=link href=http://www.zhihu.com/ >知乎</a> | <a class=link href=http://www.taobao.com/ >淘宝</a></div>
         <p class=copyright> Copyright © 2017 happymmall.com All Rights Reserved </p></div>
 </div>
+<script src=//cdn.bootcss.com/jquery/1.11.3/jquery.js></script>
 </body>
 </html>

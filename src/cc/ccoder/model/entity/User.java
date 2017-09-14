@@ -3,10 +3,13 @@ package cc.ccoder.model.entity;
 import java.util.HashSet;
 import java.util.Set;
 
-/**
- * User entity. @author MyEclipse Persistence Tools
- */
+import org.apache.struts2.json.annotations.JSON;
 
+import com.alibaba.fastjson.annotation.JSONPOJOBuilder;
+import com.alibaba.fastjson.annotation.JSONType;
+
+
+@JSONType(ignores={"commentses","orderItems","orders","carts","shippings"})
 public class User implements java.io.Serializable {
 
 	// Fields
@@ -71,6 +74,7 @@ public class User implements java.io.Serializable {
 
 	// Property accessors
 
+	
 	public Integer getId() {
 		return this.id;
 	}
