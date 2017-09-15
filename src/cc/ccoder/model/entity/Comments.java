@@ -1,8 +1,5 @@
 package cc.ccoder.model.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
 /**
  * Comments entity. @author MyEclipse Persistence Tools
  */
@@ -11,18 +8,13 @@ public class Comments implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private User user;
-	private Comments comments;
-	private Product product;
+	private Integer userId;
+	private Integer parentId;
+	private Integer productId;
 	private String comment;
 	private Integer status;
 	private String createTime;
-	private Set commentses = new HashSet(0);
 
 	// Constructors
 
@@ -31,15 +23,14 @@ public class Comments implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Comments(User user, Comments comments, Product product,
-			String comment, Integer status, String createTime, Set commentses) {
-		this.user = user;
-		this.comments = comments;
-		this.product = product;
+	public Comments(Integer userId, Integer parentId, Integer productId,
+			String comment, Integer status, String createTime) {
+		this.userId = userId;
+		this.parentId = parentId;
+		this.productId = productId;
 		this.comment = comment;
 		this.status = status;
 		this.createTime = createTime;
-		this.commentses = commentses;
 	}
 
 	// Property accessors
@@ -52,28 +43,28 @@ public class Comments implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return this.user;
+	public Integer getUserId() {
+		return this.userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Comments getComments() {
-		return this.comments;
+	public Integer getParentId() {
+		return this.parentId;
 	}
 
-	public void setComments(Comments comments) {
-		this.comments = comments;
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
 	}
 
-	public Product getProduct() {
-		return this.product;
+	public Integer getProductId() {
+		return this.productId;
 	}
 
-	public void setProduct(Product product) {
-		this.product = product;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
 	public String getComment() {
@@ -98,14 +89,6 @@ public class Comments implements java.io.Serializable {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
-	}
-
-	public Set getCommentses() {
-		return this.commentses;
-	}
-
-	public void setCommentses(Set commentses) {
-		this.commentses = commentses;
 	}
 
 }

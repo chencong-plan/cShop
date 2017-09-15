@@ -10,14 +10,14 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <many-to-one name="user" class="cc.ccoder.model.entity.User" fetch="select">
+        <property name="userId" type="java.lang.Integer">
             <column name="user_id" not-null="true" />
-        </many-to-one>
-        <many-to-one name="product" class="cc.ccoder.model.entity.Product" fetch="select">
+        </property>
+        <property name="productId" type="java.lang.Integer">
             <column name="product_id">
                 <comment>商品id</comment>
             </column>
-        </many-to-one>
+        </property>
         <property name="quantity" type="java.lang.Integer">
             <column name="quantity">
                 <comment>数量</comment>

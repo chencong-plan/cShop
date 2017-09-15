@@ -1,24 +1,18 @@
 package cc.ccoder.model.entity;
 
-import java.util.HashSet;
-import java.util.Set;
-
-import com.alibaba.fastjson.annotation.JSONType;
-
 /**
  * Category entity. @author MyEclipse Persistence Tools
  */
-@JSONType(ignores={"categories","products","category"})
+
 public class Category implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
+	// Fields
+
 	private Integer id;
-	private Category category;
+	private Integer parentId;
 	private String name;
 	private Integer status;
 	private String createTime;
-	private Set categories = new HashSet(0);
-	private Set products = new HashSet(0);
 
 	// Constructors
 
@@ -27,14 +21,12 @@ public class Category implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public Category(Category category, String name, Integer status,
-			String createTime, Set categories, Set products) {
-		this.category = category;
+	public Category(Integer parentId, String name, Integer status,
+			String createTime) {
+		this.parentId = parentId;
 		this.name = name;
 		this.status = status;
 		this.createTime = createTime;
-		this.categories = categories;
-		this.products = products;
 	}
 
 	// Property accessors
@@ -47,12 +39,12 @@ public class Category implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Category getCategory() {
-		return this.category;
+	public Integer getParentId() {
+		return this.parentId;
 	}
 
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setParentId(Integer parentId) {
+		this.parentId = parentId;
 	}
 
 	public String getName() {
@@ -77,22 +69,6 @@ public class Category implements java.io.Serializable {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
-	}
-
-	public Set getCategories() {
-		return this.categories;
-	}
-
-	public void setCategories(Set categories) {
-		this.categories = categories;
-	}
-
-	public Set getProducts() {
-		return this.products;
-	}
-
-	public void setProducts(Set products) {
-		this.products = products;
 	}
 
 }

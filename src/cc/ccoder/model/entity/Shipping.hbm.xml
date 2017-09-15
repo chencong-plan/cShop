@@ -10,11 +10,11 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <many-to-one name="user" class="cc.ccoder.model.entity.User" fetch="select">
+        <property name="userId" type="java.lang.Integer">
             <column name="user_id">
                 <comment>用户id</comment>
             </column>
-        </many-to-one>
+        </property>
         <property name="name" type="java.lang.String">
             <column name="name" length="20">
                 <comment>收货姓名</comment>
@@ -48,13 +48,5 @@
         <property name="createTime" type="java.lang.String">
             <column name="createTime" length="25" />
         </property>
-        <set name="orders" inverse="true">
-            <key>
-                <column name="shipping_id">
-                    <comment>收货地址编号</comment>
-                </column>
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.Order" />
-        </set>
     </class>
 </hibernate-mapping>

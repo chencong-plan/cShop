@@ -10,12 +10,12 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <many-to-one name="user" class="cc.ccoder.model.entity.User" fetch="select">
+        <property name="userId" type="java.lang.Integer">
             <column name="user_id" />
-        </many-to-one>
-        <many-to-one name="order" class="cc.ccoder.model.entity.Order" fetch="select">
+        </property>
+        <property name="orderNo" type="java.lang.Long">
             <column name="order_no" />
-        </many-to-one>
+        </property>
         <property name="productId" type="java.lang.Integer">
             <column name="product_id">
                 <comment>商品id</comment>

@@ -24,17 +24,4 @@ public interface ICategoryService {
 	 */
 	List<Category> selectCategoryChildrenByParentId(Integer parentId);
 
-	/**
-	 * 查询分类详细信息及其子分类详细信息
-	 * 
-	 * @return
-	 */
-	List<Category> selectCategories();
-
-	/**
-	 * 根据给定id查找出该id对应的所有子分类id
-	 * @param id
-	 * @return
-	 */
-	List<Integer> selectCategoryAndChildrenById(Integer categoryId);
 }

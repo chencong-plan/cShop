@@ -84,7 +84,7 @@
 				</a></li>
 				<li class=nav-item><a class=link href="user/order-list.jsp">我的订单</a></li>
 				<li class=nav-item><a class=link href="user/user-center.jsp">我的MMall</a></li>
-				<li class=nav-item><a class=link href=./about.html>关于MMall</a></li>
+				<li class=nav-item><a class=link href="user/about.jsp">关于MMall</a></li>
 			</ul>
 		</div>
 	</div>

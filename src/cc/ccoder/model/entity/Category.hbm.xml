@@ -10,11 +10,11 @@
             <column name="id" />
             <generator class="native" />
         </id>
-        <many-to-one name="category" class="cc.ccoder.model.entity.Category" fetch="select">
+        <property name="parentId" type="java.lang.Integer">
             <column name="parent_id">
                 <comment>父类别id当id=0时说明是根节点,一级类别</comment>
             </column>
-        </many-to-one>
+        </property>
         <property name="name" type="java.lang.String">
             <column name="name" length="50">
                 <comment>类别名称</comment>
@@ -30,21 +30,5 @@
                 <comment>创建时间</comment>
             </column>
         </property>
-        <set name="categories" inverse="true">
-            <key>
-                <column name="parent_id">
-                    <comment>父类别id当id=0时说明是根节点,一级类别</comment>
-                </column>
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.Category" />
-        </set>
-        <set name="products" inverse="true">
-            <key>
-                <column name="category_id" not-null="true">
-                    <comment>分类id,对应mmall_category表的主键</comment>
-                </column>
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.Product" />
-        </set>
     </class>
 </hibernate-mapping>

@@ -1,23 +1,13 @@
 package cc.ccoder.model.entity;
 
-import java.util.HashSet;
-import java.util.Set;
+/**
+ * User entity. @author MyEclipse Persistence Tools
+ */
 
-import org.apache.struts2.json.annotations.JSON;
-
-import com.alibaba.fastjson.annotation.JSONPOJOBuilder;
-import com.alibaba.fastjson.annotation.JSONType;
-
-
-@JSONType(ignores={"commentses","orderItems","orders","carts","shippings"})
 public class User implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String username;
 	private String password;
@@ -29,11 +19,6 @@ public class User implements java.io.Serializable {
 	private Integer status;
 	private String activeKey;
 	private String createTime;
-	private Set commentses = new HashSet(0);
-	private Set orderItems = new HashSet(0);
-	private Set orders = new HashSet(0);
-	private Set carts = new HashSet(0);
-	private Set shippings = new HashSet(0);
 
 	// Constructors
 
@@ -53,8 +38,7 @@ public class User implements java.io.Serializable {
 	/** full constructor */
 	public User(String username, String password, String email, String phone,
 			String question, String answer, Integer role, Integer status,
-			String activeKey, String createTime, Set commentses,
-			Set orderItems, Set orders, Set carts, Set shippings) {
+			String activeKey, String createTime) {
 		this.username = username;
 		this.password = password;
 		this.email = email;
@@ -65,16 +49,10 @@ public class User implements java.io.Serializable {
 		this.status = status;
 		this.activeKey = activeKey;
 		this.createTime = createTime;
-		this.commentses = commentses;
-		this.orderItems = orderItems;
-		this.orders = orders;
-		this.carts = carts;
-		this.shippings = shippings;
 	}
 
 	// Property accessors
 
-	
 	public Integer getId() {
 		return this.id;
 	}
@@ -161,46 +139,6 @@ public class User implements java.io.Serializable {
 
 	public void setCreateTime(String createTime) {
 		this.createTime = createTime;
-	}
-
-	public Set getCommentses() {
-		return this.commentses;
-	}
-
-	public void setCommentses(Set commentses) {
-		this.commentses = commentses;
-	}
-
-	public Set getOrderItems() {
-		return this.orderItems;
-	}
-
-	public void setOrderItems(Set orderItems) {
-		this.orderItems = orderItems;
-	}
-
-	public Set getOrders() {
-		return this.orders;
-	}
-
-	public void setOrders(Set orders) {
-		this.orders = orders;
-	}
-
-	public Set getCarts() {
-		return this.carts;
-	}
-
-	public void setCarts(Set carts) {
-		this.carts = carts;
-	}
-
-	public Set getShippings() {
-		return this.shippings;
-	}
-
-	public void setShippings(Set shippings) {
-		this.shippings = shippings;
 	}
 
 }

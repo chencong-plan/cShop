@@ -8,13 +8,9 @@ public class OrderItem implements java.io.Serializable {
 
 	// Fields
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 	private Integer id;
-	private User user;
-	private Order order;
+	private Integer userId;
+	private Long orderNo;
 	private Integer productId;
 	private String productName;
 	private String productImage;
@@ -30,11 +26,11 @@ public class OrderItem implements java.io.Serializable {
 	}
 
 	/** full constructor */
-	public OrderItem(User user, Order order, Integer productId,
+	public OrderItem(Integer userId, Long orderNo, Integer productId,
 			String productName, String productImage, Double unitPrice,
 			Integer quantity, Double totalPrice, String createTime) {
-		this.user = user;
-		this.order = order;
+		this.userId = userId;
+		this.orderNo = orderNo;
 		this.productId = productId;
 		this.productName = productName;
 		this.productImage = productImage;
@@ -54,20 +50,20 @@ public class OrderItem implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public User getUser() {
-		return this.user;
+	public Integer getUserId() {
+		return this.userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(Integer userId) {
+		this.userId = userId;
 	}
 
-	public Order getOrder() {
-		return this.order;
+	public Long getOrderNo() {
+		return this.orderNo;
 	}
 
-	public void setOrder(Order order) {
-		this.order = order;
+	public void setOrderNo(Long orderNo) {
+		this.orderNo = orderNo;
 	}
 
 	public Integer getProductId() {

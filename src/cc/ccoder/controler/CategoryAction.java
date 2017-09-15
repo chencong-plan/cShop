@@ -15,27 +15,18 @@ import cc.ccoder.model.service.ICategoryService;
 public class CategoryAction {
 
 	private String result;
+	private List<Category> cateList;
 
 	@Autowired
 	private ICategoryService iCategoryService;
-
-	public String getCategories() {
-		List<Category> categories = iCategoryService.selectCategories();
-		for(Category category : categories){
-			System.out.println(category);
-		}
-		result = JSON.toJSONString(ServerResponse.createBySuccess("分类信息",
-				categories));
+	
+	public String getCategories(){
+		result = JSON.toJSONString(ServerResponse.createByErrorMessage("暂无数据"));
 		return "success";
 	}
 	
-//	public String getAllCategories(){
-//		List<Integer> categoriesId = iCategoryService.selectCategoryAndChildrenById(1);
-//		result = JSON.toJSONString(ServerResponse.createBySuccess("查询成功", categoriesId));
-//		return "success";
-//	}
-
 	
+
 	public String getResult() {
 		return result;
 	}
@@ -43,5 +34,8 @@ public class CategoryAction {
 	public void setResult(String result) {
 		this.result = result;
 	}
+
+	
+
 
 }

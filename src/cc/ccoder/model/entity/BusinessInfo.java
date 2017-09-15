@@ -1,9 +1,13 @@
 package cc.ccoder.model.entity;
 
+/**
+ * BusinessInfo entity. @author MyEclipse Persistence Tools
+ */
+
 public class BusinessInfo implements java.io.Serializable {
 
+	// Fields
 
-	private static final long serialVersionUID = 1L;
 	private Integer id;
 	private String name;
 	private String phone;

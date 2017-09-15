@@ -11,12 +11,12 @@
             <generator class="native" />
         </id>
         <property name="username" type="java.lang.String">
-            <column name="username" length="50"  unique="true">
+            <column name="username" length="50" not-null="true">
                 <comment>用户名</comment>
             </column>
         </property>
         <property name="password" type="java.lang.String">
-            <column name="password" length="50" >
+            <column name="password" length="50" not-null="true">
                 <comment>用户密码，MD5加密</comment>
             </column>
         </property>
@@ -37,7 +37,7 @@
             </column>
         </property>
         <property name="role" type="java.lang.Integer">
-            <column name="role" >
+            <column name="role" not-null="true">
                 <comment>角色0-管理员,1-普通用户</comment>
             </column>
         </property>
@@ -52,45 +52,9 @@
             </column>
         </property>
         <property name="createTime" type="java.lang.String">
-            <column name="createTime" length="25" >
+            <column name="createTime" length="25" not-null="true">
                 <comment>创建时间</comment>
             </column>
         </property>
-        <set name="commentses" inverse="true">
-            <key>
-                <column name="user_id">
-                    <comment>用户id</comment>
-                </column>
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.Comments" />
-        </set>
-        <set name="orderItems" inverse="true">
-            <key>
-                <column name="user_id" />
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.OrderItem" />
-        </set>
-        <set name="orders" inverse="true">
-            <key>
-                <column name="user_id">
-                    <comment>用户id</comment>
-                </column>
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.Order" />
-        </set>
-        <set name="carts" inverse="true">
-            <key>
-                <column name="user_id" not-null="true" />
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.Cart" />
-        </set>
-        <set name="shippings" inverse="true">
-            <key>
-                <column name="user_id">
-                    <comment>用户id</comment>
-                </column>
-            </key>
-            <one-to-many class="cc.ccoder.model.entity.Shipping" />
-        </set>
     </class>
 </hibernate-mapping>
