@@ -31,4 +31,10 @@ public interface ICategoryDao {
 	 */
 	List<Category> selectCategories();
 
+	
+	/**
+	 * 通过父id查询当前节点下面的所有字节点id
+	 * @return
+	 */
+	List<Integer> selectCategoryIdByParentId(Integer parentId);
 }

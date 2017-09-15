@@ -1,6 +1,7 @@
 package cc.ccoder.model.service;
 
 import java.util.List;
+import java.util.Map;
 
 import cc.ccoder.model.entity.Category;
 
@@ -24,4 +25,7 @@ public interface ICategoryService {
 	 */
 	List<Category> selectCategoryChildrenByParentId(Integer parentId);
 
+	
+	Map<Category,List<Category>> getCategories(Integer parentId);
+	
 }

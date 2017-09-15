@@ -71,4 +71,13 @@ public class Category implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 
+	@Override
+	public String toString() {
+		return "Category [id=" + id + ", parentId=" + parentId + ", name="
+				+ name + ", status=" + status + ", createTime=" + createTime
+				+ "]";
+	}
+	
+	
+
 }

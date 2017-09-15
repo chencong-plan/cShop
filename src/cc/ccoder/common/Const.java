@@ -17,6 +17,7 @@ public class Const {
     //type类别信息
     public static final String EMAIL = "email";
     public static final String USERNAME = "username";
+    
 
 
     /**

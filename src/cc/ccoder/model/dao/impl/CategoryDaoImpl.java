@@ -6,6 +6,7 @@ import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -36,7 +37,7 @@ public class CategoryDaoImpl implements ICategoryDao {
 	public List<Category> selectCategoryChildrenByParentId(Integer parentId) {
 		Session session = this.sessionFactory.getCurrentSession();
 		Query query = session
-				.createQuery("from Category where category.id = ? ");
+				.createQuery("from Category where parentId = ? ");
 		query.setParameter(0, parentId);
 		List<Category> categories = query.list();
 		return categories;
@@ -48,6 +49,15 @@ public class CategoryDaoImpl implements ICategoryDao {
 		Query query = session.createQuery("from Category");
 		List<Category> categories = query.list();
 		return categories;
+	}
+
+	@Override
+	public List<Integer> selectCategoryIdByParentId(Integer parentId) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session.createQuery("from Category where parentId = ?");
+		query.setParameter(0, parentId);
+		List<Integer> categoryIdLists = query.list();
+		return categoryIdLists;
 	}
 
 }
