@@ -32,6 +32,7 @@ public class CategoryServiceImpl implements ICategoryService {
 	public Map<Category, List<Category>> getCategories(Integer parentId) {
 		//当前parentId下面的子分类信息
 		List<Category> categories = selectCategoryChildrenByParentId(parentId);
+		System.out.println("parentId分类 ： "+categories);
 		Map<Category, List<Category>> categoryMap = new HashMap<Category, List<Category>>();
 		for(Category categoryItem : categories){
 			categoryMap.put(categoryItem,selectCategoryChildrenByParentId(categoryItem.getId()));

@@ -25,6 +25,9 @@
                 <comment>类别状态1-正常,2-已废弃</comment>
             </column>
         </property>
+        <property name="imageUrl" type="java.lang.String">
+            <column name="image_url" />
+        </property>
         <property name="createTime" type="java.lang.String">
             <column name="createTime" length="25">
                 <comment>创建时间</comment>

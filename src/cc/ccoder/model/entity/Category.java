@@ -12,6 +12,7 @@ public class Category implements java.io.Serializable {
 	private Integer parentId;
 	private String name;
 	private Integer status;
+	private String imageUrl;
 	private String createTime;
 
 	// Constructors
@@ -22,10 +23,11 @@ public class Category implements java.io.Serializable {
 
 	/** full constructor */
 	public Category(Integer parentId, String name, Integer status,
-			String createTime) {
+			String imageUrl, String createTime) {
 		this.parentId = parentId;
 		this.name = name;
 		this.status = status;
+		this.imageUrl = imageUrl;
 		this.createTime = createTime;
 	}
 
@@ -63,6 +65,14 @@ public class Category implements java.io.Serializable {
 		this.status = status;
 	}
 
+	public String getImageUrl() {
+		return this.imageUrl;
+	}
+
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
+
 	public String getCreateTime() {
 		return this.createTime;
 	}
@@ -74,8 +84,8 @@ public class Category implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Category [id=" + id + ", parentId=" + parentId + ", name="
-				+ name + ", status=" + status + ", createTime=" + createTime
-				+ "]";
+				+ name + ", status=" + status + ", imageUrl=" + imageUrl
+				+ ", createTime=" + createTime + "]";
 	}
 	
 	

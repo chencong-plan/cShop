@@ -54,4 +54,13 @@
 			<result type="redirect">/index.jsp</result>
 		</action>
 	</package>
-</struts>    
+	
+	<!-- 分类下商品信息请求 -->
+	<package name="product_package" namespace="/" extends="json-default">
+		<action name="products" class="productAction">
+			<result type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+</struts>   

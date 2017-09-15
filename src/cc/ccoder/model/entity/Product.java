@@ -140,4 +140,15 @@ public class Product implements java.io.Serializable {
 		this.createTime = createTime;
 	}
 
+	@Override
+	public String toString() {
+		return "Product [id=" + id + ", categoryId=" + categoryId + ", name="
+				+ name + ", subtitle=" + subtitle + ", mainImage=" + mainImage
+				+ ", subImages=" + subImages + ", detail=" + detail
+				+ ", price=" + price + ", stock=" + stock + ", status="
+				+ status + ", createTime=" + createTime + "]";
+	}
+	
+	
+
 }
