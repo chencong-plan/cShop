@@ -18,6 +18,8 @@
 
 <!-- 加入jquery -->
 <script type="text/javascript" src="resourses/jquery-3.2.1.min.js"></script>
+<!-- 映入bootstrap的分页 -->
+<script type="text/javascript" src="resourses/bootstrap/js/bootstrap.js"></script>
 <script type="text/javascript">
 	$(function() {
 		$.ajax({
@@ -68,19 +70,22 @@
 			url : "products!categories",
 			data : {
 				"categoryId" : categoryId,
-				"keyword":keyword
+				"keyword" : keyword
 			},
 			type : "POST",
 			success : function(data) {
 				var result = JSON.parse(data);
-				alert(result.status);
-				if(result.status == "0"){
-					$(".p-list-con").css("display","block");
-					$(".pagination").css("display","block");
-					$(".loading").css("display","none");
-				}else{
-					alert(result.msg);
-					$(".loading").html(result.msg);
+				//alert(result.status);
+				//加载到数据
+				if (result.status == "0") {
+					$(".p-list-con").css("display", "block");
+					$(".pagination").css("display", "block");
+					$(".loading").css("display", "none");
+					$(".err-tip").css("display","none");
+				} else {
+					//没有数据
+					$(".err-tip").css("display","block");
+					$(".loading").css("display", "block");
 				}
 			}
 		});
@@ -137,12 +142,34 @@
 		</ul>
 		<!-- list容器 -->
 		<ul class="p-list-con">
+			<p class="err-tip">很抱歉，没有找到您需要的商品。</p>
 			<li>
 				<div class="loading"></div>
 			</li>
+			<c:forEach items="${sessionScope.productLists}" var="product">
+				<li class="p-item">
+					<div class="p-img-con">
+						<a class="link" href="getProduct!getProductById?productId=${product.id}"
+							target="_bank"> <img class="p-img"
+							src="image/product/${product.mainImage}"
+							alt="${product.name} ${product.subtitle}">
+						</a>
+					</div>
+					<div class="p-price-con">
+						<span class="p-price">￥${product.price}</span>
+					</div>
+					<div class="p-name-con">
+						<a href="getProduct!getProductById?productId=${product.id}" target="_bank"
+							class="p-name" title="${product.name} ${product.subtitle}">${product.name}
+							${product.subtitle}</a>
+					</div>
+				</li>
+			</c:forEach>
+
 		</ul>
 		<!-- 分页容器 -->
-		<div class="pagination"></div>
+		<div class="pagination">
+		</div>
 	</div>
 	<div class=footer>
 		<div class=w>

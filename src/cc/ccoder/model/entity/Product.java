@@ -148,6 +148,41 @@ public class Product implements java.io.Serializable {
 				+ ", price=" + price + ", stock=" + stock + ", status="
 				+ status + ", createTime=" + createTime + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		return this.id.hashCode() + this.name.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Product other = (Product) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		if (subtitle == null) {
+			if (other.subtitle != null)
+				return false;
+		} else if (!subtitle.equals(other.subtitle))
+			return false;
+		return true;
+	}
+	
+	
+	
 	
 	
 

@@ -19,7 +19,7 @@ public interface IProductService {
 	 */
 	List<Product> getProductsByCategoryId(Integer categoryId, Integer pageNum,
 			Integer pageSize);
-	
+
 	/**
 	 * 通过关键字查询所有匹配的结果
 	 * 
@@ -33,4 +33,13 @@ public interface IProductService {
 	 */
 	List<Product> getProductsByKeyword(String keyword, Integer pageNum,
 			Integer pageSize);
+
+	/**
+	 * 通过商品id，查找该商品的详细信息
+	 * 
+	 * @param productId
+	 *            将要查找的商品的id
+	 * @return 返回该商品的详细信息，实体对象
+	 */
+	Product getProductById(Integer productId);
 }

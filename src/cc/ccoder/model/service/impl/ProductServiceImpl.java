@@ -26,4 +26,9 @@ public class ProductServiceImpl implements IProductService  {
 		return iProductDao.getProductsByKeyword(keyword, pageNum, pageSize);
 	}
 
+	@Override
+	public Product getProductById(Integer productId) {
+		return iProductDao.getProductById(productId);
+	}
+
 }

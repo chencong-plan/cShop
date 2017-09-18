@@ -33,4 +33,13 @@ public interface IProductDao {
 	 */
 	List<Product> getProductsByKeyword(String keyword, Integer pageNum,
 			Integer pageSize);
+
+	/**
+	 * 通过商品id查找该商品实体信息
+	 * 
+	 * @param productId
+	 *            将要查找的商品的id
+	 * @return 返回该商品的详细信息实体
+	 */
+	Product getProductById(Integer productId);
 }

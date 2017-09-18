@@ -43,4 +43,11 @@ public class ProductDaoImpl implements IProductDao {
 		return products;
 	}
 
+	@Override
+	public Product getProductById(Integer productId) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Product product = (Product) session.get(Product.class, productId);
+		return product;
+	}
+
 }

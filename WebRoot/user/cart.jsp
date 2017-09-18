@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!doctype html>
 <html>
 <head>
@@ -100,12 +101,74 @@
 	<div class="crumb">
 		<div class="w">
 			<div class="crumb-list">
-				<a href="./index.html" class="crumb-item">MMall</a> <span>></span> <span
+				<a href="../index.jsp" class="crumb-item">MMall</a> <span>></span> <span
 					class="crumb-item">我的购物车</span>
 			</div>
 		</div>
 	</div>
-	<div class="cart-wrap w"></div>
+	<!-- 显示购物车 -->
+	<div class="cart-wrap w">
+		<!-- 表单头部描述 -->
+		<div class="cart-header">
+			<table class="cart-table">
+				<tbody>
+					<tr>
+						<th class="cart-cell cell-check">
+							<label>
+								<input class="cart-select-all" checked="checked" type="checkbox">
+								<span>全选</span>
+							</label>
+						</th>
+						<th class="cart-cell cell-info">商品详情</th>
+						<th class="cart-cell cell-price">单价</th>
+						<th class="cart-cell cell-count">数量</th>
+						<th class="cart-cell cell-total">合计</th>
+						<th class="cart-cell cell-opera">操作</th>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<!-- 将遍历显示商品信息 -->
+		<div class="cart-list">
+			<table class="cart-table" data-product-id="34" data-checked="1">
+				<tbody>
+					<c:choose>
+						<c:when test="${empty sessionScope.cartMap}">
+							<p class="err-tip">购物车空空的</p>
+						</c:when>
+						<c:otherwise>
+						<c:forEach items="${sessionScope.cartMap.productMap}" var="cart">
+							<tr>
+							<td class="cart-cell cell-check">
+								<input type="checkbox" class="cart-select" checked="checked">
+							</td>
+							<td class="cart-cell cell-img">
+								<a href="" target="_bank">
+									<img class="p-img" src="image/product/${cart.key.mainImage}" alt="${cart.key.subtitle}">
+								</a>
+							</td>
+							<td class="cart-cell cell-info">
+								<a class="link p-name" href="getProduct!getProductById?productId=${cart.key.id }" target="_bank">${cart.key.subtitle}</a>
+							</td>
+							<td class="cart-cell cell-price">￥${cart.key.price }</td>
+							<td class="cart-cell cell-count">
+								<span class="count-btn" data-opera-type="minus" >-</span>
+								<input class="count-input" data-max="3434" value="1">
+								<span class="count-btn" data-opera-type="plus">+</span>
+							</td>
+							<td class="cart-cell cell-total">￥${sessionScope.cartMap.totalPricce}</td>
+							<td class="cart-cell cell-opera">
+								<a class="link cart-delete">删除</a>
+							</td>
+						</tr>
+						</c:forEach>
+						</c:otherwise>
+					</c:choose>
+				</tbody>
+			</table>
+		</div>
+		<div class="cart-footer"></div>
+	</div>
 	<div class=footer>
 		<div class=w>
 			<div class=links>

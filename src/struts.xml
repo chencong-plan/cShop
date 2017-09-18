@@ -62,5 +62,16 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+		<!-- 通过商品id显示该商品的详细信息 -->
+		<action name="getProduct" class="productAction" >
+			<result name="success" type="redirect">/detail.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 购物车操作包 -->
+	<package name="cart_package" namespace="/" extends="json-default">
+		<action name="addCart"  class="cartAction">
+			<result name="success" type="redirect">/user/cart.jsp</result>
+		</action>
 	</package>
 </struts>   
