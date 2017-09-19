@@ -1,5 +1,7 @@
 package cc.ccoder.controler;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.apache.struts2.ServletActionContext;
@@ -11,6 +13,7 @@ import com.opensymphony.xwork2.Result;
 
 import cc.ccoder.common.Const;
 import cc.ccoder.model.entity.User;
+import cc.ccoder.model.entity.vo.OrderVo;
 import cc.ccoder.model.service.IOrderService;
 
 @Controller("orderAction")
@@ -34,7 +37,13 @@ public class OrderAction {
 			result = "add_order_success";
 		}
 		return "success";
-
+	}
+	
+	public String getOrders(){
+		HttpSession session = ServletActionContext.getRequest().getSession();
+		User user = (User) session.getAttribute(Const.CURRENT_USER);
+		List<OrderVo> orderVos = iOrderService.getOrders(user);
+		return null;
 	}
 
 	public Integer getShippingId() {

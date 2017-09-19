@@ -1,5 +1,6 @@
 package cc.ccoder.model.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +14,10 @@ import cc.ccoder.model.entity.OrderItem;
 import cc.ccoder.model.entity.Shipping;
 import cc.ccoder.model.entity.User;
 import cc.ccoder.model.entity.vo.CartVo;
+import cc.ccoder.model.entity.vo.OrderVo;
 import cc.ccoder.model.service.ICartService;
 import cc.ccoder.model.service.IOrderService;
+import cc.ccoder.model.service.IShippingService;
 import cc.ccoder.utils.DateUtils;
 import cc.ccoder.utils.UUIDUtils;
 
@@ -29,6 +32,12 @@ public class OrderServiceImpl implements IOrderService {
 
 	@Autowired
 	private ICartService iCartService;
+	
+	@Autowired 
+	private IShippingService iShippingService;
+	
+	@Autowired
+	private IOrderService iOrderService;
 
 	private Order getOrderInf(User user, Integer shippingId, double totalprice) {
 		Order order = new Order();
@@ -56,7 +65,7 @@ public class OrderServiceImpl implements IOrderService {
 			orderItem.setUserId(userId);
 			orderItem.setOrderNo(orderNo);
 			orderItem.setProductId(cartVo.getProductId());
-			orderItem.setProductImage(cartVo.getProductName());
+			orderItem.setProductName(cartVo.getProductName());
 			orderItem.setProductImage(cartVo.getMainImage());
 			orderItem.setUnitPrice(cartVo.getProductPrice());
 			orderItem.setQuantity(cartVo.getQuantity());
@@ -84,6 +93,25 @@ public class OrderServiceImpl implements IOrderService {
 		} else {
 			return false;
 		}
+	}
+
+	@Override
+	public List<OrderVo> getOrders(User user) {
+		List<Order> orders = iOrderDao.getOrders(user);
+		List<OrderVo> orderVos = new ArrayList<OrderVo>();
+		for(Order order : orders){
+			OrderVo orderVo = new OrderVo();
+			orderVo.setOrderId(order.getId());
+			orderVo.setOrderNo(order.getOrderNo());
+			orderVo.setOrderStatus(order.getStatus());
+			Shipping shipping = iShippingService.getShippingById(order.getShippingId());
+			orderVo.setReviceName(shipping.getName());
+			orderVo.setOrderTotalPrice(order.getPayment());
+			orderVo.setCreateTime(order.getCreateTime());
+			//设置orderItem-->list
+			orderVo.setOrderItemVos(null);
+		}
+		return null;
 	}
 
 }

@@ -105,9 +105,76 @@
 		</div>
 	</div>
 	<div class="order-detail-wrap w">
-		<div class="left-con"></div>
+		<div class="left-con">
+			<ul class="menu">
+				<li class="menu-item"><a class="link" href="user-center.jsp">个人中心</a></li>
+				<li class="menu-item active"><a class="link"
+					href="order-list.jsp">我的订单</a></li>
+				<li class="menu-item"><a class="link" href="pass-update.jsp">修改密码</a></li>
+				<li class="menu-item"><a class="link" href="about.jsp">关于ccoder</a></li>
+			</ul>
+		</div>
 		<div class="right-con">
-			<div class="loading"></div>
+			<!-- <div class="loading"></div> -->
+			<div class="panel">
+				<div class="panel-title">订单信息</div>
+				<div class="panel-body">
+					<div class="order-info">
+						<div class="text-line">
+							<span class="text">订单号：20170919223233</span> <span class="text">创建时间：2017-09-19
+								21:36:31</span>
+						</div>
+						<div class="text-line">
+							<span class="text">收件人：聪聪 湖北省 武汉 蔡甸区沌阳大道江汉大学 </span>
+						</div>
+						<div class="text-line">
+							<span class="text">订单状态：已取消</span>
+						</div>
+						<div class="text-line">
+							<span class="text">支付方式：在线支付</span>
+						</div>
+						<div class="text-line"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel">
+				<div class="panel-title">商品清单</div>
+				<div class="panel-body">
+					<table class="order-list-table header">
+						<tbody>
+							<tr>
+								<th class="order-list-cell cell-img">&nbsp;</th>
+								<th class="order-list-cell cell-info">商品信息</th>
+								<th class="order-list-cell cell-price">单价</th>
+								<th class="order-list-cell cell-count">数量</th>
+								<th class="order-list-cell cell-total">合计</th>
+							</tr>
+						</tbody>
+					</table>
+					<table class="order-list-table order-item">
+						<tbody>
+							<tr>
+								<td class="order-list-cell cell-img"><a
+									href="./detail.html?productId=27" target="_blank"><img
+										class="p-img"
+										src="http://img.happymmall.com/ac3e571d-13ce-4fad-89e8-c92c2eccf536.jpeg"
+										alt="【测试学习使用】Midea/美的 BCD-535WKZM(E)冰箱双开门无霜智能家用厨卫家电"></a></td>
+								<td class="order-list-cell cell-info"><a
+									class="link p-name" href="./detail.html?productId=27"
+									target="_blank">【测试学习使用】Midea/美的
+										BCD-535WKZM(E)冰箱双开门无霜智能家用厨卫家电</a></td>
+								<td class="order-list-cell cell-price">￥3299</td>
+								<td class="order-list-cell cell-count">1</td>
+								<td class="order-list-cell cell-total">￥3299</td>
+							</tr>
+						</tbody>
+					</table>
+					<p class="total pull-right">
+						<span>订单总价：</span> <span class="enhance">￥3299</span>
+					</p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class=footer>

@@ -165,7 +165,7 @@
 				<ul>
 					<li><a href=""
 						target="_blank"> <img class="banner-img"
-							src="//s.happymmall.com/mmall_fe/dist/resource/banner-fe.jpg" />
+							src="image/product/59bf896eN972de82a.jpg" />
 					</a></li>
 
 				</ul>

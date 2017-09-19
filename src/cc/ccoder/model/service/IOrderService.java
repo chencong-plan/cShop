@@ -1,6 +1,9 @@
 package cc.ccoder.model.service;
 
+import java.util.List;
+
 import cc.ccoder.model.entity.User;
+import cc.ccoder.model.entity.vo.OrderVo;
 
 public interface IOrderService {
 
@@ -15,5 +18,7 @@ public interface IOrderService {
 	 * @return 返回此次操作是否成功
 	 */
 	boolean addOrder(String[] cartIds, Integer shippingId, User user, double totalPrice);
+
+	List<OrderVo> getOrders(User user);
 
 }
