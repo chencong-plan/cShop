@@ -85,4 +85,27 @@ public class UserDaoImpl implements IUserDao {
 		return row > 0 ? true : false;
 	}
 
+	@Override
+	public User getUserByEmailUsername(String username, String email) {
+		Session session = this.sessionFactory.getCurrentSession();
+		Query query = session
+				.createQuery("from User where username = ? and email = ?");
+		query.setParameter(0, username);
+		query.setParameter(1, email);
+		List<User> userList = query.list();
+		return userList.size() > 0 ? userList.get(0) : null;
+	}
+
+	@Override
+	public boolean updateUserStatus(User user) {
+		Session session = this.sessionFactory.getCurrentSession();
+		try {
+			session.update(user);
+			return true;
+		} catch (HibernateException e) {
+			e.printStackTrace();
+			return false;
+		}
+	}
+
 }

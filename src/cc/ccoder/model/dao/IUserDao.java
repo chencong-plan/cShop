@@ -18,4 +18,8 @@ public interface IUserDao {
 
 	boolean updateUserPassword(String username, String password);
 
+	User getUserByEmailUsername(String username, String email);
+
+	boolean updateUserStatus(User user);
+
 }

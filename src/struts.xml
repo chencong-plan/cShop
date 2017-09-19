@@ -46,6 +46,11 @@
 				<param name="root">result</param>
 			</result>
 		</action>
+		<!-- 激活用户 -->
+		<action name="activeUser" class="userUpdateAction">
+			<result name="active_success" type="redirect">/user/active_success.jsp</result>
+			<result name="active_fail" type="redirect">/user/active_fail.jsp</result>
+		</action>
 	</package>
 	
 	<!-- 商品分类请求包 -->
@@ -75,6 +80,37 @@
 		</action>
 		<action name="getCarts" class="cartAction">
 			<result name="success" type="redirect">/user/cart.jsp</result>
+		</action>
+		<action name="deleteCart" class="cartAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+		<!-- 前往结算 -->
+		<action name="addToConfirm" class="cartAction">
+			<result name="success" type="redirect">/confirm.jsp</result>
+		</action>
+	</package>
+	
+	<!-- 添加收货地址包 -->
+	<package name="shipping_package" namespace="/" extends="json-default">
+		<action name="addShipping" class="shippingAction">
+			<result name="success" type="redirect">/confirm.jsp</result>
+		</action>
+		<action name="deleteShipping" class="shippingAction">
+			<result name="success" type="redirect">/confirm.jsp</result>
+		</action>
+		<action name="getShipping" class="shippingAction">
+			<result name="success" type="json">
+				<param name="root">result</param>
+			</result>
+		</action>
+	</package>
+	
+	<!-- 添加商品进入订单  -->
+	<package name="order_package" namespace="/" extends="json-default">
+		<action name="addOrder" class="orderAction">
+			<result name="success" type="redirect">/payment.jsp</result>
 		</action>
 	</package>
 </struts>   

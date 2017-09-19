@@ -64,6 +64,80 @@
 				}
 			});
 		});
+		
+		//删除选中项
+		$(".cart-delete-selected").click(function(){
+			//点击全选按钮后 遍历页面上面所有的checkbox 并且将其全部赋值为checked
+			 var str = "";
+			 $("input[name='check_get']").each(function(){
+			 	if($(this).is(":checked")){
+			 		//得到选中的checkbox
+			 		var id = $(this).val();
+			 		str +=id+",";
+			 		$("#"+id).remove();
+			 	}
+			 });
+			 alert(str);
+			 $.ajax({
+			 	url:"../deleteCart!deleteCartById",
+			 	data:{
+			 		"cartIdArray":str
+			 	},
+			 	type:"POST",
+			 	success:function(data){
+			 		var result = JSON.parse(data);
+					if(result.msg == "delete_success"){
+						//删除表单tr
+						$(".submit-total").html("￥"+result.data);
+					}
+			 	}
+			 });
+		});
+		
+		//删除单个
+		$(".cart-delete").click(function(){
+			var cartId = $(this).attr("value");
+			$.ajax({
+				url:"../deleteCart!deleteCartById",
+				data:{
+					"cartIdArray":cartId
+				},
+				type:"POST",
+				success:function(data){
+					alert(data);
+					var result = JSON.parse(data);
+					if(result.msg == "delete_success"){
+						//删除表单tr
+						$("#"+cartId).remove();
+						$(".submit-total").html("￥"+result.data);
+					}
+				}
+			});
+		});
+		
+		//选择商品进行下单
+		$(".submit-btn").click(function(){
+			 var str = "";
+			 $("input[name='check_get']").each(function(){
+			 	if($(this).is(":checked")){
+			 		//得到选中的checkbox
+			 		var id = $(this).val();
+			 		str +=id+",";
+			 	}
+			 });
+			 alert(str);
+			 var arry = new Array();
+			 arry = str.split(",");
+			 if(arry.length == 1){
+				 $(".show_msg").css("display","block");
+			 	$(".show_msg").html("还没有选中任何商品呢....");
+			 	$(".show_msg").css("color","red");
+			 }else{
+			 	$(".show_msg").css("display","none");
+			 	//将选中的id 带到action 然后将查到的商品信息放入seession当中 然后跳转到confirm.jsp
+			 	window.location.href="../addToConfirm!addToConfirm?cartIdArray="+str;
+			 }
+		});
 	});
 </script>
 </head>
@@ -138,13 +212,14 @@
 						</c:when>
 						<c:otherwise>
 						<c:forEach items="${sessionScope.cartVos}" var="cartVo">
-							<tr>
+							<!-- 存储其id --><input  id="cartId${cartId}" value="${cartVo.cartId }" hidden="hidden">
+							<tr id="${cartVo.cartId}">
 							<td class="cart-cell cell-check">
-								<input type="checkbox" class="cart-select" checked="checked">
+								<input type="checkbox" name="check_get" value="${cartVo.cartId }" class="cart-select" checked="checked">
 							</td>
 							<td class="cart-cell cell-img">
 								<a href="" target="_bank">
-									<img class="p-img" src="image/product/${cartVo.mainImage}" alt="${cartVo.productTitle}"/>
+									<img class="p-img" src="../image/product/${cartVo.mainImage}" alt="${cartVo.productTitle}"/>
 								</a>
 							</td>
 							<td class="cart-cell cell-info">
@@ -153,12 +228,12 @@
 							<td class="cart-cell cell-price">￥${cartVo.productPrice}</td>
 							<td class="cart-cell cell-count">
 								<span class="count-btn" data-opera-type="minus" >-</span>
-								<input class="count-input" data-max="3434" value="${cartVo.quantity }">
+								<input class="count-input" data-max="3434" value="${cartVo.quantity}">
 								<span class="count-btn" data-opera-type="plus">+</span>
 							</td>
 							<td class="cart-cell cell-total">￥${cartVo.totalPrice}</td>
 							<td class="cart-cell cell-opera">
-								<a class="link cart-delete">删除</a>
+								<a class="link cart-delete" value="${cartVo.cartId}">删除</a>
 							</td>
 						</tr>
 						</c:forEach>
@@ -167,7 +242,26 @@
 				</tbody>
 			</table>
 		</div>
-		<div class="cart-footer"></div>
+		<div class="cart-footer clear">
+			<div class="select-con">
+				<label>
+					<input type="checkbox" class="cart-select-all" checked="checked">
+					<span>全选</span>
+				</label>
+			</div>
+			<div class="delete-con">
+				<a class="cart-delete-selected link">
+					<i class="fa fa-trash-o" aria-hidden="true"></i>
+					<span>删除选中</span>
+				</a>
+			</div>
+			<div class="submit-con">
+				<span class="show_msg"></span>&nbsp;&nbsp;&nbsp;&nbsp;
+				<span>总价：</span>
+				<span class="submit-total">￥${sessionScope.totalPrice}</span>
+				<span class="btn submit-btn">去结算</span>
+			</div>
+		</div>
 	</div>
 	<div class=footer>
 		<div class=w>

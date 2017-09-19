@@ -60,4 +60,17 @@ public class UserServiceImpl implements IUserService {
 		return iUserDao.updateUserPassword(username,password);
 	}
 
+	@Override
+	public User getUserByEmailUsername(String username, String email) {
+		if (username == null || email == null) {
+			return null;
+		}
+		return iUserDao.getUserByEmailUsername(username,email);
+	}
+
+	@Override
+	public boolean updateUserStatus(User user) {
+		return iUserDao.updateUserStatus(user);
+	}
+
 }

@@ -108,10 +108,9 @@
 		</div>
 	</div>
 	<div class="about-wrap w">
-		<!--div class="left-con"></div-->
 		<div class="right-con">
 			<div class="panel">
-				<div class="panel-title">关于MMall</div>
+				<div class="panel-title">关于ccoder</div>
 				<div class="panel-body">
 					<div class="about-con">
 						<p class="text">我们是谁？</p>

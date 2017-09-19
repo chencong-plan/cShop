@@ -91,7 +91,7 @@
 				</span>
 			</div>
 			<ul class=nav-list>
-				<li class=nav-item><a class=link href="user/cart.jsp"> <i
+				<li class=nav-item><a class=link href="getCarts!getCartByUserId"> <i
 						class="fa fa-shopping-cart"></i> 购物车(<span class=cart-count>0</span>)
 				</a></li>
 				<li class=nav-item><a class=link href="user/order-list.jsp">我的订单</a></li>

@@ -21,4 +21,18 @@ public interface ICartDao {
 	 */
 	List<Cart> getCartsByUserId(User user, Integer pageNum, Integer pageSize);
 
+	/**
+	 * 通过购物车id删除当前购物车商品
+	 * @param cartIds  将要删除的购物车id
+	 * @return  返回此次操作是否成功
+	 */
+	boolean deleteCartById(String[] cartIds);
+
+	/**
+	 * 通过id 查找购物车信息
+	 * @param i
+	 * @return
+	 */
+	Cart getCartById(int cartId);
+
 }

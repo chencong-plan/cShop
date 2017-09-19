@@ -106,7 +106,14 @@
 		</div>
 	</div>
 	<div class="pass-update-wrap w">
-		<div class="left-con"></div>
+	<div class="left-con">
+    	<ul class="menu">
+    		<li class="menu-item active"><a class="link" href="user-center.jsp">个人中心</a></li>
+			<li class="menu-item "><a class="link" href="order-list.jsp">我的订单</a></li>
+			<li class="menu-item"><a class="link" href="pass-update.jsp">修改密码</a></li>
+			<li class="menu-item"><a class="link" href="about.jsp">关于ccoder</a></li>
+    	</ul>
+    </div>
 		<div class="right-con">
 			<div class="panel">
 				<div class="panel-title">我的信息</div>

@@ -18,5 +18,9 @@ public class DateUtils {
 		SimpleDateFormat simpleDateFormat = new SimpleDateFormat(FORMAT);
 		return simpleDateFormat.format(date);
 	}
+	
+	public static void main(String[] args) {
+		System.out.println(getCurrentTime("yyyyMMddHHmmss"));
+	}
 
 }

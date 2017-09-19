@@ -18,6 +18,32 @@ public class Const {
     public static final String EMAIL = "email";
     public static final String USERNAME = "username";
     
+    //订单状态
+    /**
+     * 已取消
+     */
+    public static final Integer CANCEL = 0;
+    /**
+     * 未支付
+     */
+    public static final Integer NO_PAY = 10;
+    /**
+     * 已支付
+     */
+    public static final Integer IS_PAY = 20;
+    /**
+     * 已发货
+     */
+    public static final Integer IS_EXPRESS = 40;
+    /**
+     * 交易成功
+     */
+    public static final Integer BUSINESS_SUCCESS = 50;
+    /**
+     * 交易关闭
+     */
+    public static final Integer BUSINESS_CLOSE = 60;
+    
 
 
     /**
