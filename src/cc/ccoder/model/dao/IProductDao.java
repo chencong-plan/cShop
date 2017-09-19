@@ -2,7 +2,9 @@ package cc.ccoder.model.dao;
 
 import java.util.List;
 
+import cc.ccoder.model.entity.Cart;
 import cc.ccoder.model.entity.Product;
+import cc.ccoder.model.entity.User;
 
 public interface IProductDao {
 
@@ -42,4 +44,19 @@ public interface IProductDao {
 	 * @return 返回该商品的详细信息实体
 	 */
 	Product getProductById(Integer productId);
+
+	/**
+	 * 将要添加进入购物车的实体
+	 * @param cart 
+	 * @return
+	 */
+	boolean addCart(Cart cart);
+	
+	/**
+	 * 判断该用户的购物车当中是否已经存在该商品
+	 * @param userId  用户id
+	 * @param productId  将要添加的商品
+	 * @return 返回该商品实体
+	 */
+	Cart getCartById(Integer userId,Integer productId);
 }

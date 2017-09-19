@@ -2,7 +2,9 @@ package cc.ccoder.model.service;
 
 import java.util.List;
 
+import cc.ccoder.model.entity.Cart;
 import cc.ccoder.model.entity.Product;
+import cc.ccoder.model.entity.User;
 
 public interface IProductService {
 
@@ -42,4 +44,11 @@ public interface IProductService {
 	 * @return 返回该商品的详细信息，实体对象
 	 */
 	Product getProductById(Integer productId);
+
+	/**
+	 * 添加商品进入购物车
+	 * @param cart
+	 * @return
+	 */
+	boolean addCart(Cart cart);
 }

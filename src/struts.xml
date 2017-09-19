@@ -71,6 +71,9 @@
 	<!-- 购物车操作包 -->
 	<package name="cart_package" namespace="/" extends="json-default">
 		<action name="addCart"  class="cartAction">
+			<result name="success" type="redirect">/result.jsp</result>
+		</action>
+		<action name="getCarts" class="cartAction">
 			<result name="success" type="redirect">/user/cart.jsp</result>
 		</action>
 	</package>

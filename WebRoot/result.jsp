@@ -13,6 +13,22 @@
 <link
 	href="//s.happymmall.com/mmall_fe/dist/css/result.css?9dd65f513c150dbd6188"
 	rel="stylesheet">
+<script type="text/javascript" src="resourses/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+	$(function(){
+		var result = "${sessionScope.result}";
+		if(result == "no_login_cart"){
+			window.location.href="user/userlogin.jsp"
+		}
+		if(result == "addcart_success"){
+			$(".cart-add-success").css("display","block");
+		}
+		if(result == "addcart_fail"){
+			$(".cart-add-success").css("display","block");
+			$(".result-title").html("加载购物车失败");
+		}
+	});
+</script>
 </head>
 <body>
 	<div class=header-simple>
@@ -36,8 +52,8 @@
 		<div class="result-con cart-add-success">
 			<h1 class="result-title">您的商品已成功加入购物车</h1>
 			<p class="result-content">
-				<a class="link" href="./index.html">继续购物</a> <a class="link"
-					href="./cart.html">去购物车查看</a>
+				<a class="link" href="index.jsp">继续购物</a> <a class="link"
+					href="getCarts!getCartByUserId">去购物车查看</a>
 			</p>
 		</div>
 		<div class="result-con payment-success">

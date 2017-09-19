@@ -163,7 +163,7 @@
 		<div class="banner-wrap">
 			<div class="banner">
 				<ul>
-					<li><a href="http://coding.imooc.com/class/109.html"
+					<li><a href=""
 						target="_blank"> <img class="banner-img"
 							src="//s.happymmall.com/mmall_fe/dist/resource/banner-fe.jpg" />
 					</a></li>

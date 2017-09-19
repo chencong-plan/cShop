@@ -133,30 +133,30 @@
 			<table class="cart-table" data-product-id="34" data-checked="1">
 				<tbody>
 					<c:choose>
-						<c:when test="${empty sessionScope.cartMap}">
+						<c:when test="${empty sessionScope.cartVos}">
 							<p class="err-tip">购物车空空的</p>
 						</c:when>
 						<c:otherwise>
-						<c:forEach items="${sessionScope.cartMap.productMap}" var="cart">
+						<c:forEach items="${sessionScope.cartVos}" var="cartVo">
 							<tr>
 							<td class="cart-cell cell-check">
 								<input type="checkbox" class="cart-select" checked="checked">
 							</td>
 							<td class="cart-cell cell-img">
 								<a href="" target="_bank">
-									<img class="p-img" src="image/product/${cart.key.mainImage}" alt="${cart.key.subtitle}">
+									<img class="p-img" src="image/product/${cartVo.mainImage}" alt="${cartVo.productTitle}"/>
 								</a>
 							</td>
 							<td class="cart-cell cell-info">
-								<a class="link p-name" href="getProduct!getProductById?productId=${cart.key.id }" target="_bank">${cart.key.subtitle}</a>
+								<a class="link p-name" href="../getProduct!getProductById?productId=${cartVo.productId}" target="_bank">${cartVo.productTitle}</a>
 							</td>
-							<td class="cart-cell cell-price">￥${cart.key.price }</td>
+							<td class="cart-cell cell-price">￥${cartVo.productPrice}</td>
 							<td class="cart-cell cell-count">
 								<span class="count-btn" data-opera-type="minus" >-</span>
-								<input class="count-input" data-max="3434" value="1">
+								<input class="count-input" data-max="3434" value="${cartVo.quantity }">
 								<span class="count-btn" data-opera-type="plus">+</span>
 							</td>
-							<td class="cart-cell cell-total">￥${sessionScope.cartMap.totalPricce}</td>
+							<td class="cart-cell cell-total">￥${cartVo.totalPrice}</td>
 							<td class="cart-cell cell-opera">
 								<a class="link cart-delete">删除</a>
 							</td>
