@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import cc.ccoder.common.Const;
@@ -19,7 +20,6 @@ import cc.ccoder.model.service.ICartService;
 import cc.ccoder.model.service.IOrderService;
 import cc.ccoder.model.service.IShippingService;
 import cc.ccoder.utils.DateUtils;
-import cc.ccoder.utils.UUIDUtils;
 
 @Service("iOrderService")
 public class OrderServiceImpl implements IOrderService {
@@ -36,8 +36,7 @@ public class OrderServiceImpl implements IOrderService {
 	@Autowired 
 	private IShippingService iShippingService;
 	
-	@Autowired
-	private IOrderService iOrderService;
+
 
 	private Order getOrderInf(User user, Integer shippingId, double totalprice) {
 		Order order = new Order();

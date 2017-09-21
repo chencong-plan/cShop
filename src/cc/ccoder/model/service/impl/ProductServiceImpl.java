@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import cc.ccoder.model.dao.IProductDao;
 import cc.ccoder.model.entity.Cart;
 import cc.ccoder.model.entity.Product;
-import cc.ccoder.model.entity.User;
 import cc.ccoder.model.service.IProductService;
 
 @Service("iProductService")
